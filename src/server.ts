@@ -1,9 +1,6 @@
-console.log('Hello')
+import dotenv from "dotenv";
+dotenv.config();
 
-import moment from "moment"
-const currentTime = moment().format("YYYY MM DD")
-console.log(currentTime);
+console.log("PORT:", process.env.PORT);
 
-const person: string = "Oscar";
-const count: number = 100;
-
+console.log("MONGO_URL:", process.env.MONGO_URL);
