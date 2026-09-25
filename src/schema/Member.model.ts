@@ -1,0 +1,57 @@
+import mongoose, { Schema } from "mongoose";
+import { MemberType } from "../libs/enums/member.enum";
+import { MemberStatus } from "../libs/enums/member.enum"
+
+// Schema first & Code based
+// Schema first:
+
+const memberSchema = new Schema({
+    memberType: {
+      type: String,
+      enum: MemberType,
+      default: MemberType.USER
+    },
+
+    memberStatus: {
+      type: String,
+      enum: MemberStatus,
+      default: MemberStatus.ACTIVE
+    },
+
+    memberNick: {
+      type: String,
+      index: { unique: true, sparse:true},
+      required: true //qiymat qabul qilinmasin(default false}
+    },
+
+    memberPhone: {
+      type: String,
+      index: { unique: true, sparse:true},
+      required: true
+    },
+    
+    memberPassword: {
+      select: true, // bydefault databese olib bermasin!(make it private)
+      required: true // bo'lishi shart!
+    },
+
+    memberAdress: {
+      type: String
+    },
+
+    memberDesc: {
+      type: String
+    },
+
+    memberImage: {
+      type: String
+    },
+
+    memberPoints: {
+      type: Number,
+      default: 0,
+    },
+},{ timestamps: true }  // updatedat, createdat ma'lumotlarni avtomatik qo'yib beradi.
+);
+
+export default mongoose.model("Member", memberSchema);

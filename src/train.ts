@@ -2,7 +2,7 @@ function palindromCheck(str: string){
 let reverse = str.split("").reverse().join("");
 return reverse === str;
 } 
-console.log(palindromCheck("das"));
+console.log(palindromCheck("dad"));
 
 
 // TASK N:
