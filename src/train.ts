@@ -1,8 +1,21 @@
-function getSquareNumbers(arr: number[]){
-    return arr.map(num => ({ number: num, square: num * num }));
-};
-let result = getSquareNumbers([1, 2, 3])
-console.log(result);
+function palindromCheck(str: string){
+let reverse = str.split("").reverse().join("");
+return reverse === str;
+} 
+console.log(palindromCheck("das"));
+
+
+// TASK N:
+
+// Shunday function yozing, u string qabul qilsin va string palindrom yani togri oqilganda ham, orqasidan oqilganda ham bir hil oqiladigan soz ekanligini aniqlab boolean qiymat qaytarsin.
+
+// MASALAN: palindromCheck("dad") return true;  palindromCheck("son") return false;
+
+// function getSquareNumbers(arr: number[]){
+//     return arr.map(num => ({ number: num, square: num * num }));
+// };
+// let result = getSquareNumbers([1, 2, 3])
+// console.log(result);
 
 // TASK M: 4
 

@@ -1,11 +1,18 @@
-def getSquareNumbers(arr):
-    list = []
-    for num in arr:
-        list.append(f"number:{num}, square:{num ** 2}")
-    return list
+def palindormCheck(str):
+    reverse = str[:: -1]
+    return str == reverse
 
-result = getSquareNumbers([1,2,3,])
-print(result)
+print(palindormCheck("dadd"))
+
+
+# def getSquareNumbers(arr):
+#     list = []
+#     for num in arr:
+#         list.append(f"number:{num}, square:{num ** 2}")
+#     return list
+
+# result = getSquareNumbers([1,2,3,])
+# print(result)
 
 # TASK M: 4
 
