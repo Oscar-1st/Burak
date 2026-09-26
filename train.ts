@@ -1,9 +1,41 @@
-function palindromCheck(str: string){
-let reverse = str.split("").reverse().join("");
-return reverse === str;
-} 
-console.log(palindromCheck("dad"));
+function calculateSumOfNumbers(array: any){
+    let result = array.reduce((sum: number, current: any) => {
+      if(typeof current === "number"){
+         sum += current;
+      }
+      return sum;
+    }, 0);
+    return result;
+}
+console.log(calculateSumOfNumbers([10, "10", {son: 10}, true, 35]));
 
+// function calculateSumOfNumbers(array: any){
+//   let result = 0;
+//   for(let i = 0; i < array.length; i++){
+//     if(typeof array[i] === "number"){
+//        result += array[i];
+//     }
+//   }
+//   return result;  
+// }
+// console.log(calculateSumOfNumbers([10, "10", {son: 10}, true, 35]));
+
+// TASK O:
+
+// Shunday function yozing va u har xil qiymatlardan iborat array qabul qilsin.
+// Va array ichidagi sonlar yig'indisini hisoblab chiqgan javobni qaytarsin
+
+// MASALAN: calculateSumOfNumbers([10, "10", {son: 10}, true, 35]); return 45
+
+// Yuqoridagi misolda array tarkibida faqatgina ikkita yagona son mavjud bular 10 hamda 35
+// Qolganlari nested bo'lib yoki type'lari number emas.
+
+
+// function palindromCheck(str: string){
+// let reverse = str.split("").reverse().join("");
+// return reverse === str;
+// } 
+// console.log(palindromCheck("dad"));
 
 // TASK N:
 
