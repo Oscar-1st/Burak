@@ -31,12 +31,14 @@ const memberSchema = new Schema({
     },
     
     memberPassword: {
-      select: true, // bydefault databese olib bermasin!(make it private)
+      type: String,
+      select: false, // bydefault databese olib bermasin!(make it private)
       required: true // bo'lishi shart!
     },
 
-    memberAdress: {
+    memberAddress: {
       type: String
+
     },
 
     memberDesc: {
