@@ -1,8 +1,21 @@
-def palindormCheck(str):
-    reverse = str[:: -1]
-    return str == reverse
 
-print(palindormCheck("dadd"))
+
+
+def calculateSumOfNumbers(arr):
+  result = 0
+  for ele in arr:
+    if type(ele) in (int, float):
+      result+= ele
+
+  return result
+
+print(calculateSumOfNumbers([10, "10", {"son":10}, True, 35, 10.5]))
+
+# def palindormCheck(str):
+#     reverse = str[:: -1]
+#     return str == reverse
+
+# print(palindormCheck("dadd"))
 
 
 # def getSquareNumbers(arr):
