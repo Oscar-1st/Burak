@@ -6,6 +6,8 @@ const restaurantController: T = {};
 restaurantController.goHome = (req: Request, res: Response) => {
    try {
       console.log("goHome");
+      // LOGIC
+      // SERVICE MODE
       res.send('Home Page');
    } catch (error) {
       console.log("Error in goHome:", error);
@@ -25,6 +27,25 @@ restaurantController.getSignup = (req: Request, res: Response) => {
       res.send('Signup Page');
    } catch (error) {
       console.log("Error in getSignup:", error);
+   }
+};
+
+restaurantController.processLogin = (req: Request, res: Response) => {
+   try {
+      res.send("DONE");
+      console.log('Login Page');
+   } catch (err) {
+      console.log("Error in processLogin:", err);
+   }
+};
+
+restaurantController.processSignup = (req: Request, res: Response) => {
+   try {
+      console.log("processSignup");
+      res.send("DONE");
+      console.log('Signup Page');
+   } catch (err) {
+      console.log("Error in processSignup:", err);
    }
 };
 
