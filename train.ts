@@ -1,13 +1,26 @@
-function calculateSumOfNumbers(array: any){
-    let result = array.reduce((sum: number, current: any) => {
-      if(typeof current === "number"){
-         sum += current;
-      }
-      return sum;
-    }, 0);
-    return result;
+function objectToArray(obj: Record<string, any>) {
+  return Object.entries(obj).map(([key, value]) => [key, value]);
 }
-console.log(calculateSumOfNumbers([10, "10", {son: 10}, true, 35]));
+
+console.log(objectToArray({ a: 10, b: 20 }));
+
+// TASK P:
+
+// Parametr sifatida yagona object qabul qiladigan function yozing.
+// Qabul qilingan objectni nested array sifatida convert qilib qaytarsin
+
+// MASALAN: objectToArray( {a: 10, b: 20}) return [['a', 10], ['b', 20]]
+
+// function calculateSumOfNumbers(array: any){
+//     let result = array.reduce((sum: number, current: any) => {
+//       if(typeof current === "number"){
+//          sum += current;
+//       }
+//       return sum;
+//     }, 0);
+//     return result;
+// }
+// console.log(calculateSumOfNumbers([10, "10", {son: 10}, true, 35]));
 
 // function calculateSumOfNumbers(array: any){
 //   let result = 0;
