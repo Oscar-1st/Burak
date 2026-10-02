@@ -10,9 +10,8 @@ const restaurantController: T = {};
 restaurantController.goHome = (req: Request, res: Response) => {
    try {
       console.log("goHome");
-      // LOGIC
-      // SERVICE MODE
-      res.send('Home Page');
+      res.render('home');
+      // send | json | redirect | render
    } catch (error) {
       console.log("Error in goHome:", error);
    }
