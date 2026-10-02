@@ -19,7 +19,7 @@ restaurantController.goHome = (req: Request, res: Response) => {
 
 restaurantController.getSignup = (req: Request, res: Response) => {
    try {
-      res.send('Signup Page');
+      res.render('signup');
    } catch (error) {
       console.log("Error in getSignup:", error);
    }
@@ -27,7 +27,7 @@ restaurantController.getSignup = (req: Request, res: Response) => {
 
 restaurantController.getlogin = (req: Request, res: Response) => {
    try {
-      res.send('Login Page');
+      res.render('login');
    } catch (error) {
       console.log("Error in getlogin:", error);
    }

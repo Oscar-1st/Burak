@@ -47,8 +47,7 @@ class MemberService {
 		return await this.memberModel.findById(member._id).lean().exec();
   }
 		
-
-		
+	
 		/* SSR */
   public async processSignup(input: MemberInput): Promise<Member> {
 		const exist = await this.memberModel.findOne({ memberType: MemberType.RESTAURANT})

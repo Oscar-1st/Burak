@@ -1,8 +1,24 @@
-function objectToArray(obj: Record<string, any>) {
-  return Object.entries(obj).map(([key, value]) => [key, value]);
-}
 
-console.log(objectToArray({ a: 10, b: 20 }));
+function hasProperty(obj:{ name: string, model: string }, str: string){
+  return console.log(Object.keys(obj).includes(str));
+}
+hasProperty({ name: "BMW", model: "M3" }, "model");
+
+// TASK Q:
+
+// Shunday function yozing, u 2 ta parametrga ega bo'lib
+// birinchisi object, ikkinchisi string bo'lsin.
+// Agar qabul qilinayotgan ikkinchi string, objectning
+// biror bir propertysiga mos kelsa, 'true', aks holda mos kelmasa 'false' qaytarsin.
+
+// MASALAN: hasProperty({ name: "BMW", model: "M3" }, "model"); return true;
+// Ushbu misolda, 'model' string, objectning propertysiga mos kelganligi uchun 'true' natijani qaytarmoqda
+
+// function objectToArray(obj: Record<string, any>) {
+//   return Object.entries(obj).map(([key, value]) => [key, value]);
+// }
+
+// console.log(objectToArray({ a: 10, b: 20 }));
 
 // TASK P:
 
