@@ -17,3 +17,8 @@
   Rest API
   GraphQL API
 */
+
+/*
+  Tradutuional FD  => BSSR  => EJS
+  Modern FD        => SPA   => REACT
+*/
