@@ -10,7 +10,7 @@ import connectMongoDB from "connect-mongodb-session";
 
 const MongoDBStore = connectMongoDB(session);
 const store = new MongoDBStore({
-  uri: String(process.env.MONGO_URI),
+  uri: String(process.env.MONGO_URL),
   collection: "sessions",
 });
 

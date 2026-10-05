@@ -21,7 +21,7 @@ class MemberService {
       try {
         const result = await this.memberModel.create(input);
         result.memberPassword = "";
-				return result.toJSON();;
+				return result.toJSON();
        } catch (err) {
 			console.log("Error, model:signup", err);
       throw new Errors(HttpCode.BAD_REQUEST, Message.USED_NICK_PHONE);
@@ -47,7 +47,7 @@ class MemberService {
 		return await this.memberModel.findById(member._id).lean().exec();
   }
 		
-	
+
 		/* SSR */
   public async processSignup(input: MemberInput): Promise<Member> {
 		const exist = await this.memberModel.findOne({ memberType: MemberType.RESTAURANT})
