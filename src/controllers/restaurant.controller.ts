@@ -3,7 +3,7 @@ import { T } from "../libs/types/common";
 import MemberService from "../models/Member.service";
 import { AdminRequest, LoginInput, MemberInput } from "../libs/types/member";
 import { MemberType } from "../libs/enums/member.enum";
-import { Message } from "../libs/Error";
+import Errors, { Message } from "../libs/Error";
 
 const memberService = new MemberService();
 
@@ -15,6 +15,7 @@ restaurantController.goHome = (req: Request, res: Response) => {
       // send | json | redirect | render
    } catch (error) {
       console.log("Error in goHome:", error);
+			res.redirect('/admin');
    }
 };
 
@@ -23,6 +24,7 @@ restaurantController.getSignup = (req: Request, res: Response) => {
       res.render('signup');
    } catch (error) {
       console.log("Error in getSignup:", error);
+			res.redirect('/admin');
    }
 };
 
@@ -31,6 +33,7 @@ restaurantController.getlogin = (req: Request, res: Response) => {
       res.render('login');
    } catch (error) {
       console.log("Error in getlogin:", error);
+			res.redirect('/admin');
    }
 };
 
@@ -48,7 +51,8 @@ restaurantController.processSignup = async (req: AdminRequest, res: Response) =>
 		});
 	} catch (err) {
 		console.log("Error in processSignup:", err);
-		res.send(err);
+		const message = err instanceof Errors ? err.message : Message.SOMEThING_WENT_WRONG;
+		res.send(`<script>alert('${message}'): window.location.replace = '/admin/login';</script>`);
 	}
 };
 
@@ -64,11 +68,25 @@ restaurantController.processLogin = async (req: AdminRequest, res: Response) => 
 			});			
    } catch (err) {
       console.log("Error in processLogin:", err);
-      res.send(err);
+			const message = err instanceof Errors ? err.message : Message.SOMEThING_WENT_WRONG;
+      res.send(`<script>alert('${message}'): window.location.replace = '/admin/login';</script>`);
    }
 };
 
-restaurantController.checkAuthession = async (req: AdminRequest, res: Response) => {
+restaurantController.logout = async (req: AdminRequest, res: Response) => {
+	 try {
+			console.log('Logout');
+			req.session.destroy(function() {
+				res.redirect('/admin');
+			});
+	 } catch (err) {
+			console.log("Error in logout:", err);
+			res.send(err);
+			res.redirect('/admin');
+	 }
+};
+
+restaurantController.checkAuthSession = async (req: AdminRequest, res: Response) => {
    try {
       console.log('Checking Authentication');
       if(req.session?.member) res.send(`<script>alert('Hi, ${req.session.member.memberNick}')</script>`);		
@@ -78,7 +96,5 @@ restaurantController.checkAuthession = async (req: AdminRequest, res: Response) 
       res.send(err);
    }
 };
-
-
 
 export default restaurantController;
