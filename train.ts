@@ -1,8 +1,23 @@
-
-function hasProperty(obj:{ name: string, model: string }, str: string){
-  return console.log(Object.keys(obj).includes(str));
+function calculate(str: string): number {
+  const numbers = str.match(/\d+/g)?.map(Number) || [];
+  return numbers.reduce((sum, num) => sum + num, 0);
 }
-hasProperty({ name: "BMW", model: "M3" }, "model");
+
+console.log(calculate("1 + 3"));
+
+// TASK R
+
+// Shunday function yozing, u string parametrga ega bo'lsin.
+// Agar argument sifatida berilayotgan string, "1 + 2" bo'lsa,
+// string ichidagi sonlarin yig'indisni hisoblab, number holatida qaytarsin
+
+// MASALAN: calculate("1 + 3"); return 4;
+// 1 + 3 = 4, shu sababli 4 natijani qaytarmoqda.
+
+// function hasProperty(obj:{ name: string, model: string }, str: string){
+//   return console.log(Object.keys(obj).includes(str));
+// }
+// hasProperty({ name: "BMW", model: "M3" }, "model");
 
 // TASK Q:
 
