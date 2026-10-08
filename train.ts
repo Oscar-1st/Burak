@@ -1,9 +1,23 @@
-function calculate(str: string): number {
-  const numbers = str.match(/\d+/g)?.map(Number) || [];
-  return numbers.reduce((sum, num) => sum + num, 0);
+function missingNumber(num: number[]): number {
+  const i = num.length;
+  const expectedSum = (i * (i + 1)) / 2;
+  const actualSum = num.reduce((sum, n) => sum + n, 0);
+  return expectedSum - actualSum;
 }
 
-console.log(calculate("1 + 3"));
+console.log(missingNumber([3, 0, 1])); // 2
+console.log(missingNumber([3, 4, 1, 2, 6, 7, 0])); // 5
+// TASK S:
+
+// Shunday function yozing, u numberlardan tashkil topgan array qabul qilsin va osha numberlar orasidagi tushib qolgan sonni topib uni return qilsin
+// MASALAN: missingNumber([3, 0, 1]) return 2
+
+// function calculate(str: string): number {
+//   const numbers = str.match(/\d+/g)?.map(Number) || [];
+//   return numbers.reduce((sum, num) => sum + num, 0);
+// }
+
+// console.log(calculate("1 + 3"));
 
 // TASK R
 
