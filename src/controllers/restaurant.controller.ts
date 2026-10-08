@@ -120,7 +120,7 @@ restaurantController.verifyRestaurant = (
   res: Response,
   next: NextFunction,
 ) => {
-  if (req.session?.member.memberType === MemberType.RESTAURANT) {
+  if (req.session?.member?.memberType === MemberType.RESTAURANT) {
     req.member = req.session.member;
     next(); // Proceed to the next middleware or route handler
   } else {
