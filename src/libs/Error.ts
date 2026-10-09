@@ -11,6 +11,7 @@ export enum HttpCode {
     CONFLICT = 409,
     INTERNAL_SERVER_ERROR = 500,
     NOT_IMPLEMENTED = 501,
+    NOT_MODIFIED = 304,
 }
 
 export enum Message {
