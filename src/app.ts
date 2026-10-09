@@ -9,6 +9,7 @@ import session from "express-session";
 import connectMongoDB from "connect-mongodb-session";
 import { T } from "./libs/types/common";
 
+//TCP-2
 const MongoDBStore = connectMongoDB(session);
 const store = new MongoDBStore({
   uri: String(process.env.MONGO_URL),
@@ -30,7 +31,7 @@ app.use(session({
   }, // 1 day
   store: store,
   resave: true, // resave session exprire
-  saveUninitialized: true,
+  saveUninitialized: true, // save new session
   })
 );
 
