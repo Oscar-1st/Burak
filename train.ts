@@ -1,12 +1,27 @@
-function missingNumber(num: number[]): number {
-  const i = num.length;
-  const expectedSum = (i * (i + 1)) / 2;
-  const actualSum = num.reduce((sum, n) => sum + n, 0);
-  return expectedSum - actualSum;
+function mergeSortedArrays(arr: number[], arr2: number[]): number[] {
+let result = arr.concat(arr2).sort((a, b) => a - b);
+return result
 }
+console.log(mergeSortedArrays([0, 3, 4, 31], [4, 6, 30]));
 
-console.log(missingNumber([3, 0, 1])); // 2
-console.log(missingNumber([3, 4, 1, 2, 6, 7, 0])); // 5
+// TASK T
+
+// Shunday function tuzing, u sonlardan tashkil topgan 2'ta array qabul qilsin.
+// Va ikkala arraydagi sonlarni tartiblab bir arrayda qaytarsin.
+
+// MASALAN: mergeSortedArrays([0, 3, 4, 31], [4, 6, 30]); return [0, 3, 4, 4, 6, 30, 31];
+
+// Yuqoridagi misolda, ikkala arrayni birlashtirib, tartib raqam bo'yicha tartiblab qaytarmoqda.
+
+// function missingNumber(num: number[]): number {
+//   const i = num.length;
+//   const expectedSum = (i * (i + 1)) / 2;
+//   const actualSum = num.reduce((sum, n) => sum + n, 0);
+//   return expectedSum - actualSum;
+// }
+
+// console.log(missingNumber([3, 0, 1])); // 2
+// console.log(missingNumber([3, 4, 1, 2, 6, 7, 0])); // 5
 // TASK S:
 
 // Shunday function yozing, u numberlardan tashkil topgan array qabul qilsin va osha numberlar orasidagi tushib qolgan sonni topib uni return qilsin
