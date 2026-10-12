@@ -43,12 +43,12 @@ restaurantController.processSignup = async (
 ) => {
   try {
     console.log("processSignup");
-		const file = req.file;
-		if(!file) 
-			throw new Errors(HttpCode.BAD_REQUEST, Message.SOMETHING_WENT_WRONG);
+    const file = req.file;
+    if (!file)
+      throw new Errors(HttpCode.BAD_REQUEST, Message.SOMETHING_WENT_WRONG);
 
     const newMember: MemberInput = req.body;
-		newMember.memberImage = file?.path;  // Set the memberImage property to the uploaded file path
+    newMember.memberImage = file?.path; // Set the memberImage property to the uploaded file path
     newMember.memberType = MemberType.RESTAURANT; // Set memberType to RESTAURANT
     const result = await memberService.processSignup(newMember);
 
@@ -115,11 +115,16 @@ restaurantController.getUsers = async (req: Request, res: Response) => {
   }
 };
 
-restaurantController.updateChosenUser = (req: Request, res: Response) => {
+restaurantController.updateChosenUser = async (req: Request, res: Response) => {
   try {
-    res.render("updateChosenUser");
-  } catch (error) {
-    console.log("Error in updateChosenUser:", error);
+    console.log("updateChosenUser");
+    const result = await memberService.updateChosenUser(req.body);
+
+    res.status(HttpCode.OK).json({ data: result });
+  } catch (err) {
+    console.log("Error in updateChosenUser:", err);
+    if (err instanceof Errors) res.status(err.code).json(err);
+    else res.status(Errors.standard.code).json(Errors.standard);
   }
 };
 
