@@ -13,12 +13,23 @@
   POST- ma'lumot yuborish uchun
 
 
-  Tradittional API
+  Tradittional API (form POST)
   Rest API
   GraphQL API
 */
 
-/*
+/* Frontend Development:
   Tradutuional FD  => BSSR  => EJS
   Modern FD        => SPA   => REACT
+*/
+
+/* Cookies:
+  request join
+  self destroy
+*/
+
+/* Validation:
+  Frontend validation
+  Backend validation
+  Database validation
 */
