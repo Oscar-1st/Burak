@@ -1,15 +1,40 @@
-function sumOdds(num: number): number {
-  let count = 0;
-  for(let i = 0; i < num; i++ ){
-    if(i % 2 !== 0){
-      count++
-    }
+function countChars(str: string): Record<string, number> {
+  const obj: Record<string, number> = {};
+
+  for (const char of str) {
+    obj[char] = (obj[char] || 0) + 1;
   }
-  return count
+
+  return obj;
 }
-console.log(sumOdds(9)); // 4
-console.log(sumOdds(11)); // 5
-console.log(sumOdds(12));
+
+console.log(countChars("hello")); 
+
+
+// TASK V
+
+// Shunday function yozing, uni string parametri bo'lsin.
+// Va bu function stringdagi har bir harfni o'zi bilan
+// necha marotaba taktorlanganligini ko'rsatuvchi object qaytarsin.
+  
+// MASALAN: countChars("hello") return {h: 1, e: 1, l: 2, o: 1}
+
+// Yuqoridagi misolda, 'hello' so'zi tarkibida
+// qatnashgan harflar necha marotaba takrorlangini bilan
+// object sifatida qaytarilmoqda.
+
+// function sumOdds(num: number): number {
+//   let count = 0;
+//   for(let i = 0; i < num; i++ ){
+//     if(i % 2 !== 0){
+//       count++
+//     }
+//   }
+//   return count
+// }
+// console.log(sumOdds(9)); // 4
+// console.log(sumOdds(11)); // 5
+// console.log(sumOdds(12));
 // TASK U
 
 // Shunday function tuzing, uni number parametri bo'lsin.
