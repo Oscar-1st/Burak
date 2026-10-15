@@ -33,7 +33,7 @@ class ProductService {
     try {
       return await this.productModel.create(input);
     } catch (err) {
-      console.log("Error, moedl:cretateNewProduct:", err);
+      console.log("Error, model:cretateNewProduct:", err);
       throw new Errors(HttpCode.BAD_REQUEST, Message.CREATE_FAILED);
     }
   }

@@ -11,7 +11,7 @@ $(function () {
       const fileType = uploadFile["type"];
       const validImageType = ["image/jpg", "image/jpeg", "image/png"];
       if(!validImageType.includes(fileType)){
-        alert("Please insert only jgp, jpeg, png!")
+        alert("Please insert only jpg, jpeg, png!")
       } else {
         if(uploadFile){
           console.log(URL.createObjectURL(uploadFile));

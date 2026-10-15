@@ -13,7 +13,7 @@ export interface Member {
   memberAddress?: string;
   memberDesc?: string;
   memberImage?: string;
-  mwemberPoints: number;
+  memberPoints: number;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -35,7 +35,7 @@ export interface LoginInput {
   memberPassword: string;
 }
 
-export interface MemberUdateInput {
+export interface MemberUpdateInput {
   _id: ObjectId;
   memberStatus?: MemberStatus;
   memberNick?: string;
