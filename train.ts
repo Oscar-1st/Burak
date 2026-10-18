@@ -1,22 +1,40 @@
-function countChars(str: string): Record<string, number> {
-  const obj: Record<string, number> = {};
+function chunkArray(array: number[], size: number) {
+  const chunk = [];
 
-  for (const char of str) {
-    obj[char] = (obj[char] || 0) + 1;
+  for (let i = 0; i < array.length; i += size) {
+    chunk.push(array.slice(i, i + size));
   }
-
-  return obj;
+  return chunk;
 }
+console.log(chunkArray([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3));
+// TASK W
 
-console.log(countChars("hello")); 
+// Shunday function yozing, u o'ziga parametr sifatida
+// yagona array va number qabul qilsin. Siz tuzgan function
+// arrayni numberda berilgan uzunlikda kesib bo'laklarga
+// ajratgan holatida qaytarsin.
+// MASALAN: chunkArray([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3);
+// return [[1, 2, 3], [4, 5, 6], [7, 8, 9], [10]];
 
+// Yuqoridagi namunada berilayotgan array ikkinchi parametr 3'ga
+// asoslanib 3 bo'lakga bo'linib qaytmoqda. Qolgani esa o'z holati qolyapti
+// function countChars(str: string): Record<string, number> {
+//   const obj: Record<string, number> = {};
 
+//   for (const char of str) {
+//     obj[char] = (obj[char] || 0) + 1;
+//   }
+
+//   return obj;
+// }
+
+// console.log(countChars("hello"));
 // TASK V
 
 // Shunday function yozing, uni string parametri bo'lsin.
 // Va bu function stringdagi har bir harfni o'zi bilan
 // necha marotaba taktorlanganligini ko'rsatuvchi object qaytarsin.
-  
+
 // MASALAN: countChars("hello") return {h: 1, e: 1, l: 2, o: 1}
 
 // Yuqoridagi misolda, 'hello' so'zi tarkibida
@@ -44,7 +62,7 @@ console.log(countChars("hello"));
 // MASALAN: sumOdds(9) return 4; sumOdds(11) return 5;
 
 // Yuqoridagi birinchi misolda, argument sifatida, 9 berilmoqda.
-// Va 0'dan boshlab sanaganda 9'gacha 4'ta toq son mavjud. 
+// Va 0'dan boshlab sanaganda 9'gacha 4'ta toq son mavjud.
 // Keyingi namunada ham xuddi shunday xolat takrorlanmoqda.
 
 // function mergeSortedArrays(arr: number[], arr2: number[]): number[] {
@@ -138,7 +156,7 @@ console.log(countChars("hello"));
 //        result += array[i];
 //     }
 //   }
-//   return result;  
+//   return result;
 // }
 // console.log(calculateSumOfNumbers([10, "10", {son: 10}, true, 35]));
 
@@ -152,11 +170,10 @@ console.log(countChars("hello"));
 // Yuqoridagi misolda array tarkibida faqatgina ikkita yagona son mavjud bular 10 hamda 35
 // Qolganlari nested bo'lib yoki type'lari number emas.
 
-
 // function palindromCheck(str: string){
 // let reverse = str.split("").reverse().join("");
 // return reverse === str;
-// } 
+// }
 // console.log(palindromCheck("dad"));
 
 // TASK N:
@@ -176,7 +193,6 @@ console.log(countChars("hello"));
 // Shunday function yozing, u raqamlardan tashkil topgan array qabul qilsin va array ichidagi har bir raqam uchun raqamni ozi va hamda osha raqamni kvadratidan tashkil topgan object hosil qilib, hosil bolgan objectlarni array ichida qaytarsin.
 // MASALAN: getSquareNumbers([1, 2, 3]) return [{number: 1, square: 1}, {number: 2, square: 4}, {number: 3, square: 9}];
 
-
 //  function reverseSentence(str) {
 // let words = str.split(" ");
 // for(let i = 0; i < words.length; i++){
@@ -186,8 +202,7 @@ console.log(countChars("hello"));
 // }
 // result = reverseSentence("we like coding!");
 // console.log(result);
-// TASK L: 
+// TASK L:
 
 // Shunday function yozing, u string qabul qilsin va string ichidagi hamma sozlarni chappasiga yozib va sozlar ketma-ketligini buzmasdan stringni qaytarsin.
 // MASALAN: reverseSentence("we like coding!") return "ew ekil gnidoc";
-
