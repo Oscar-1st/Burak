@@ -1,15 +1,39 @@
-function findIntersection(arr1: number[], arr2: number[]): number[] {
-  const result: number[] = [];
-
-  for(let value of arr1){
-    if(arr2.includes(value)){
-      result.push(value);
+function sumEvens(arr: number[]): number{
+  let count = 0;
+  for(let i = 0; i < arr.length; i++){
+    if(arr[i] % 2 == 0){
+      count+= arr[i]
     }
   }
-
-  return result;
+  return count
 }
-console.log( findIntersection([1,2,3], [3,2,0]));
+console.log(sumEvens([1, 2, 3]));
+console.log(sumEvens([1, 2, 3, 2]));
+// TASK Z
+
+// Shunday function yozing. Bu function sonlardan iborat array
+// qabul qilsin. Function'ning vazifasi array tarkibidagi juft
+// sonlarni topib ularni yig'disini qaytarsin.
+
+// MASALAN:
+// sumEvens([1, 2, 3]); return 2;
+// sumEvens([1, 2, 3, 2]); return 4;
+
+// Yuqoridagi misolda, bizning funktsiya
+// berilayotgan array tarkibidagi sonlar ichidan faqatgina juft bo'lgan
+// sonlarni topib, ularni hisoblab yig'indisini qaytarmoqda.
+// function findIntersection(arr1: number[], arr2: number[]): number[] {
+//   const result: number[] = [];
+
+//   for(let value of arr1){
+//     if(arr2.includes(value)){
+//       result.push(value);
+//     }
+//   }
+
+//   return result;
+// }
+// console.log( findIntersection([1,2,3], [3,2,0]));
 // TASK Y
 
 // Shunday function yozing, uni 2'ta array parametri bo'lsin.
