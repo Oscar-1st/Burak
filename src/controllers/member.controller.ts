@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { T } from "../libs/types/common";
 import MemberService from "../models/Member.service";
-import { ExtendedRequest, LoginInput, MemberInput } from "../libs/types/member";
+import { ExtendedRequest, LoginInput, MemberInput, MemberUpdateInput } from "../libs/types/member";
 import Errors, { HttpCode, Message } from "../libs/Error";
 import AuthService from "../models/Auth.service";
 import { AUTH_TIMER } from "../libs/config";
@@ -52,10 +52,7 @@ memberController.login = async (req: Request, res: Response) => {
 memberController.logout = (req: ExtendedRequest, res: Response) => {
   try {
     console.log("logout");
-    res.clearCookie("accessToken", {
-      httpOnly: true,
-      path: "/",
-    });
+    res.cookie( "accesstoken", null, {maxAge: 0, httpOnly: true})
     res.status(HttpCode.OK).json({ logout: true });
   } catch (err) {
     console.log("Error in logout:", err);
@@ -110,6 +107,24 @@ memberController.retrieveAuth = async (
   } catch (err) {
     console.log("Error in retrieveAuth:", err);
     next();
+  }
+};
+
+memberController.updateMember = async (
+  req: ExtendedRequest,
+  res: Response,
+) => {
+  try {
+    console.log("updateMember")
+    const input: MemberUpdateInput = req.body;
+    if(req.file) input.memberImage = req.file.path;
+    const result = await memberService.updateMember(req.member, input)
+
+    res.status(HttpCode.OK).json(result)
+  } catch (err) {
+    console.log("Error in updateMember:", err);
+    if (err instanceof Errors) res.status(err.code).json(err);
+    else res.status(Errors.standard.code).json(Errors.standard);
   }
 };
 
