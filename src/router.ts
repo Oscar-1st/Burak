@@ -22,6 +22,11 @@ router.get(
   memberController.getTopUsers,
 );
 
+router.get(
+  "/member/restaurant",
+  memberController.getRestaurant,
+);
+
 router.post(
   "/member/update",
   memberController.verifyAuth,
