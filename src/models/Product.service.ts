@@ -1,7 +1,9 @@
 import { shapeIntoMongooseObjectId } from "../libs/config";
+import { ProductStatus } from "../libs/enums/product.enum";
 import Errors, { HttpCode, Message } from "../libs/Error";
+import { T } from "../libs/types/common";
 import { Member } from "../libs/types/member";
-import { Product, ProductInput, ProductUpdateInput } from "../libs/types/product";
+import { Product, ProductInput, ProductInquiry, ProductUpdateInput } from "../libs/types/product";
 import ProductModel from "../schema/Product.model";
 
 class ProductService {
@@ -12,21 +14,45 @@ class ProductService {
   }
 
   /* SPA */
+  public async getProducts(inquiry: ProductInquiry): Promise<Product[]> {
+   const match: T = { productStatus: ProductStatus.PROCESS};
+   if(inquiry.productCollection) 
+    match.productCollection = inquiry.productCollection;
+  if(inquiry.search){
+    match.productName = {$regex: new RegExp(inquiry.search, "i")}
+  }
+
+   const sort: T = inquiry.order === "productPrice" 
+      ? {[inquiry.order]: 1} 
+      : {[inquiry.order]: -1};
+
+   const result = await this.productModel
+     .aggregate([
+       { $match: match },
+       { $sort: sort },
+       { $skip: (inquiry.page * 1 - 1) * inquiry.limit }, // 0
+       { $limit: inquiry.limit * 1},
+     ])
+     .exec();
+     if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
+
+    return result;
+  }
 
   /* SSR */
 
   public async getAllProducts(): Promise<Product[]> {
-   const result = await this.productModel.find().exec();
-   if(!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
+    const result = await this.productModel.find().exec();
+    if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
 
-   return result
+    return result;
   }
 
   public async getUsers(): Promise<Member[]> {
-   const result = await this.productModel.find().exec();
-   if(!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
+    const result = await this.productModel.find().exec();
+    if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
 
-   return result
+    return result;
   }
 
   public async createNewProduct(input: ProductInput): Promise<Product> {
@@ -39,13 +65,16 @@ class ProductService {
   }
 
   public async updateChosenProduct(
-    id: string, 
-    input: ProductUpdateInput): Promise<Product> {
+    id: string,
+    input: ProductUpdateInput,
+  ): Promise<Product> {
     // string => ObjectId
     id = shapeIntoMongooseObjectId(id);
-    const result = await this.productModel.findOneAndUpdate({ _id: id }, input, { new: true }).exec();
-    if(!result) throw new Errors(HttpCode.NOT_MODIFIED, Message.UPDATE_FAILED);
-    
+    const result = await this.productModel
+      .findOneAndUpdate({ _id: id }, input, { new: true })
+      .exec();
+    if (!result) throw new Errors(HttpCode.NOT_MODIFIED, Message.UPDATE_FAILED);
+
     console.log("result:", result);
     return result;
   }
