@@ -19,10 +19,10 @@ const orderItemSchema = new Schema(
 
     productId: {
       type: Schema.Types.ObjectId,
-      ref: "Product"
+      ref: "Product",
     },
   },
-  { timestamps: true, collection: "OrderItems"},
+  { timestamps: true, collection: "OrderItems" },
 );
 
-export default mongoose.model("OrderItem", orderItemSchema);
+export default mongoose.model("orderItems", orderItemSchema);

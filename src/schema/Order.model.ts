@@ -1,3 +1,4 @@
+import { ObjectId } from "mongoose";
 import mongoose, { Schema } from "mongoose";
 import { OrderStatus } from "../libs/enums/order.enum";
 
@@ -22,7 +23,7 @@ const orderSchema = new Schema(
       ref: "Member",
     },
   },
-  { timestamps: true},
+  { timestamps: true },
 );
 
-export default mongoose.model("Order", orderSchema)
+export default mongoose.model("Order", orderSchema);
