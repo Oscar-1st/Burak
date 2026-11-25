@@ -33,6 +33,7 @@ router.post(
   "/member/update",
   memberController.verifyAuth,
   uploader("members").single("memberImage"),
+  memberController.updateMember
 );
 
 /* Product */
